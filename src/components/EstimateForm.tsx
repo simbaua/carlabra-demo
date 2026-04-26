@@ -1,7 +1,13 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useState } from "react";
-import { PhotoIcon, WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
+import {
+  ChatBubbleLeftRightIcon,
+  EnvelopeIcon,
+  PhoneIcon,
+  PhotoIcon,
+  WrenchScrewdriverIcon,
+} from "@heroicons/react/24/outline";
 import { calculatePriceRange, damagedParts, damageTypes, extraOptions } from "@/lib/pricing";
 import type { DamageId, EstimateInput, ExtraOptionId, PartId, PriceRange } from "@/lib/types";
 import { PriceResult } from "./PriceResult";
@@ -87,7 +93,7 @@ export function EstimateForm({ onSaveRequest }: EstimateFormProps) {
       return;
     }
     onSaveRequest(estimate, priceRange);
-    setSuccessMessage("Request sent successfully. We will contact you shortly.");
+    setSuccessMessage("Request submitted successfully. Our team will contact you within 10–30 minutes.");
   }
 
   return (
@@ -224,6 +230,38 @@ export function EstimateForm({ onSaveRequest }: EstimateFormProps) {
           >
             {isCalculating ? "Calculating..." : "Calculate estimate"}
           </button>
+
+          <div className="mt-5 border border-slate-200 bg-slate-50 p-4">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Contact CarLabra</p>
+            <div className="mt-3 grid gap-3 text-sm font-semibold text-slate-700 sm:grid-cols-2">
+              <a
+                href="tel:+358449019789"
+                className="flex min-h-11 items-center gap-2 border border-slate-200 bg-white px-3 transition hover:border-ember hover:text-asphalt"
+              >
+                <PhoneIcon className="h-5 w-5 shrink-0 text-ember" />
+                +358 44 901 9789
+              </a>
+              <a
+                href="mailto:info@carlabra.fi"
+                className="flex min-h-11 items-center gap-2 border border-slate-200 bg-white px-3 transition hover:border-ember hover:text-asphalt"
+              >
+                <EnvelopeIcon className="h-5 w-5 shrink-0 text-ember" />
+                info@carlabra.fi
+              </a>
+            </div>
+            <a
+              href="https://wa.me/358449019789?text=Hello%2C%20I%20want%20a%20car%20paint%20estimate"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 bg-violet px-4 py-3 text-sm font-black uppercase tracking-[0.14em] text-white transition hover:bg-[#6d28d9] focus:outline-none focus:ring-2 focus:ring-violet focus:ring-offset-2"
+            >
+              <ChatBubbleLeftRightIcon className="h-5 w-5" />
+              WhatsApp
+            </a>
+            <p className="mt-3 text-sm font-medium leading-6 text-slate-600">
+              This is a demo version. Final pricing is confirmed after inspection.
+            </p>
+          </div>
         </form>
 
         <div className="lg:col-start-2">
